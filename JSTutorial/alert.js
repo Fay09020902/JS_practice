@@ -120,3 +120,59 @@
 
 // let result = powerCalc.calculate("2 ** 3");
 // alert( result ); // 8
+// let john = { name: "John", age: 25 };
+// let pete = { name: "Pete", age: 30 };
+// let mary = { name: "Mary", age: 28 };
+
+// let users = [ john, pete, mary ];
+
+// let names = users.map(ele =>ele.name)
+
+// alert( names ); // John, Pete, Mary
+
+// let john = { name: "John", surname: "Smith", id: 1 };
+// let pete = { name: "Pete", surname: "Hunt", id: 2 };
+// let mary = { name: "Mary", surname: "Key", id: 3 };
+
+// let users = [ john, pete, mary ];
+
+// let usersMapped = users.map(ele => ({ fullName: ele.name + " " + ele.surname, id: ele.id }));
+
+// /*
+// usersMapped = [
+//   { fullName: "John Smith", id: 1 },
+//   { fullName: "Pete Hunt", id: 2 },
+//   { fullName: "Mary Key", id: 3 }
+// ]
+// */
+
+// alert( usersMapped[0].id ) // 1
+// alert( usersMapped[0].fullName ) // John Smith
+
+// let john = { name: "John", age: 25 };
+// let pete = { name: "Pete", age: 30 };
+// let mary = { name: "Mary", age: 28 };
+
+// let arr = [ pete, john, mary ];
+
+// function sortByAge(arr){
+//     return arr.sort((a,b) => a.age - b.age)
+// }
+// sortByAge(arr);
+
+// // now: [john, mary, pete]
+// alert(arr[0].name); // John
+// alert(arr[1].name); // Mary
+// alert(arr[2].name); // Pete
+
+
+// let john = { name: "John", age: 25 };
+// let pete = { name: "Pete", age: 30 };
+// let mary = { name: "Mary", age: 29 };
+
+// let arr = [ john, pete, mary ];
+
+// function getAverageAge(arr) {
+//     return arr.reduce((prev, current) => {return prev + current.age},0) /arr.length
+// }
+// alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
