@@ -176,15 +176,79 @@
 //     return arr.reduce((prev, current) => {return prev + current.age},0) /arr.length
 // }
 // alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
-let users = [
-    {id: 'john', name: "John Smith", age: 20},
-    {id: 'ann', name: "Ann Smith", age: 24},
-    {id: 'pete', name: "Pete Peterson", age: 31},
-  ];
-  function groupById(users) {
-    return users.reduce((prev, cur) => {
-        prev[cur.id] = cur
-        return prev
-    } , {})
+// let users = [
+//     {id: 'john', name: "John Smith", age: 20},
+//     {id: 'ann', name: "Ann Smith", age: 24},
+//     {id: 'pete', name: "Pete Peterson", age: 31},
+//   ];
+//   function groupById(users) {
+//     return users.reduce((prev, cur) => {
+//         prev[cur.id] = cur
+//         return prev
+//     } , {})
+//   }
+//   let usersById = groupById(users);
+
+// function unique(arr) {
+//     return Array.from(new Set(arr))
+//   }
+
+//   let values = ["Hare", "Krishna", "Hare", "Krishna",
+//     "Krishna", "Krishna", "Hare", "Hare", ":-O"
+//   ];
+
+//   alert( unique(values) ); // Hare, Krishna, :-O
+
+
+// let salaries = {
+//     "John": 100,
+//     "Pete": 300,
+//     "Mary": 250
+//   };
+
+//   function sumSalaries(s) {
+//     let sum = 0
+//     for (let i of Object.values(s)) {
+//         sum += i
+//     }
+//     return sum
+//   }
+
+//   alert( sumSalaries(salaries) ); // 650
+
+// let user = {
+//     name: "John",
+//     years: 30
+//   };
+
+// let {name, years, isAdmin=false} = user
+// alert(isAdmin)
+
+let salaries = {
+    "John": 100,
+    "Pete": 300,
+    "Mary": 250
+  };
+
+// function topSalary(s) {
+//     if (Object.entries(s).length == 0) {
+//         return null
+//     } else {
+//         return Object.entries(s).sort((a, b) => b[1] - a[1])[0]
+//     }
+// }
+
+function topSalary(salaries) {
+
+    let maxSalary = 0;
+    let maxName = null;
+
+    for(const [name, salary] of Object.entries(salaries)) {
+      if (maxSalary < salary) {
+        maxSalary = salary;
+        maxName = name;
+      }
+    }
+
+    return maxName;
   }
-  let usersById = groupById(users);
