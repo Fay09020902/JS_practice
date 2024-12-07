@@ -252,3 +252,138 @@ let salaries = {
 
 //     return maxName;
 //   }
+
+
+// let list = {
+//   value: 1,
+//   next: {
+//     value: 2,
+//     next: {
+//       value: 3,
+//       next: {
+//         value: 4,
+//         next: null
+//       }
+//     }
+//   }
+// };
+
+// function printList(list) {
+//   if(list.next == null) {
+//     alert(list.value)
+//   } else {
+//     alert(list.value)
+//     printList(list.next)
+//   }
+// }
+// printList(list)
+
+// function sum(num1) {
+//   return function (num2) {
+//      return num1+num2
+//   }
+// }
+// alert(sum(1)(2))
+
+
+// function inBetween(a, b) {
+//   return function(x) {
+//     return x >= a && x <= b;
+//   }
+// }
+
+// let arr = [1, 2, 3, 4, 5, 6, 7];
+
+// alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
+
+// // alert( arr.filter(inArray([1, 2, 10])) ); // 1,2
+
+
+// function byField(f) {
+//   return (a, b) => {
+//     return a[f] - b[f]
+//   }
+// }
+
+// let users = [
+//   { name: "John", age: 20, surname: "Johnson" },
+//   { name: "Pete", age: 18, surname: "Peterson" },
+//   { name: "Ann", age: 19, surname: "Hathaway" }
+// ];
+
+// alert(users.sort(byField('name')))
+// alert(users.sort(byField('age')))
+
+
+
+const arr = [
+  ['I', 'B', 'C', 'A', 'L', 'K', 'A'],
+  ['D', 'R', 'F', 'C', 'A', 'E', 'A'],
+  ['G', 'H', 'O', 'E', 'L', 'A', 'D']
+];
+function decode(message) {
+  let rsl
+  let col_len = message[0].length - 1
+  let row_len = message.length - 1
+  let [x, y] = [0, 0]
+  let sign = -1
+  while(x <= col_len) {
+    console.log(y, x, message[y][x])
+    rsl += message[y][x]
+    if (y === 0) {
+      y += 1
+      sign = 1;
+    } else if(y === row_len){
+      y -= 1
+      sign = -1
+    } else {
+      y = y + sign
+    }
+    x += 1
+  }
+  return rsl
+}
+// function decode(message) {
+//   // Handle empty or partial arrays early
+//   if (!message.length || !message[0].length) return "";
+
+//   let rsl = "";
+//   let col_len = message[0].length - 1;
+//   let row_len = message.length - 1;
+//   let x = 0, y = 0;
+//   let sign = -1;
+
+//   // If there's only one row, no vertical movement is possible
+//   if (row_len === 0) {
+//     // Just iterate horizontally
+//     while (x <= col_len) {
+//       rsl += message[0][x];
+//       x++;
+//     }
+//     return rsl;
+//   }
+
+//   // Multiple rows scenario
+//   while (x <= col_len) {
+//     rsl += message[y][x];
+
+//     if (y === 0) {
+//       // Top row reached, move down next time
+//       y += 1;
+//       sign = 1;
+//     } else if (y === row_len) {
+//       // Bottom row reached, move up next time
+//       y -= 1;
+//       sign = -1;
+//     } else {
+//       // Continue moving in the current sign direction
+//       y += sign;
+//     }
+
+//     x += 1;
+//   }
+//  console.log(rsl)
+//   return rsl;
+// }
+
+decode(arr)
