@@ -202,3 +202,74 @@ class Queue {
 // Your implementation of the peek method contains a subtle bug: the loop condition in peek assumes that transferring elements from the input stack to the output stack happens using for (let i = 0; i < this.inputStack.size(); i++). However, this will cause an issue because this.inputStack.size() changes dynamically as elements are popped during each iteration.
 
 // Instead, a while loop should be used for transferring elements, as it continues until the inputStack is empty.
+
+//14.
+// In JavaScript, the value of this is determined by how a function is called. When you invoke a function in a certain context (like using an object method), this refers to that context (i.e., the object from which the function is called).
+// Context (this): The context (this) inside the returned memoized function will refer to the object from which the memoized function is called (for example, a.memoed(2) will ensure that this refers to a). Using func.apply(this, args) ensures that the correct context is passed to func.
+//When you use func(X) directly, JavaScript cannot infer what object this should refer to. Here's the basic rule:
+
+// Method Call: When a function is called as a method of an object, e.g., object.method(), this refers to the object.
+// Function Call: When a function is called directly, e.g., func(), this refers to the global object (or undefined in strict mode).
+// The JavaScript engine does not automatically "look up the chain" to find the correct context of this when calling the function directly.
+
+//Arrow functions in JavaScript do not have their own this. Instead, they lexically bind this based on the surrounding scope when the function is defined. This means that the value of this inside an arrow function is determined by where the function is defined, not by how it is called.
+// This can be problematic in your memo function because, when using arrow functions, this will refer to the enclosing context (which might not be what you want, especially when the memoized function is called as a method of an object).
+function memo(func, resolver = (...args) => Array.from(args).join('_')) {
+  //return a function accept arguments
+  //store keys as array
+  //if key in dic, then return the value
+  //if key does not exits, call func and cached the key and value in dic
+  let dic = {};
+  //let context = this //a.memo(2,), in this case, a is this and then pass to func
+  return function(...args) {
+    let key = resolver(...args)
+    let value;
+    if (key in dic) {
+      value = dic[key]
+    } else {
+      //value = func(...args) this does not apply to object
+      value = func.apply(this, args) //call function with context and array of args
+      dic[key] = value
+    }
+    return value;
+  };
+}
+
+
+//25
+function sort(items, newOrder) {
+  let n = items.length;
+
+  for (let i = 0; i < n; i++) {
+    // Process each item only if it's not already placed in the correct position
+    while (newOrder[i] !== i) {
+      let targetIndex = newOrder[i];
+
+      // Swap items to their correct positions
+      [items[i], items[targetIndex]] = [items[targetIndex], items[i]];
+
+      // Swap newOrder values to reflect the changes
+      [newOrder[i], newOrder[targetIndex]] = [newOrder[targetIndex], newOrder[i]];
+    }
+  }
+
+  return items;
+}
+
+// 2nd way
+function sort(items, newOrder) {
+  // Create a dictionary to map new indices to corresponding values
+  let new_dic = {};
+
+  // Populate the dictionary with the elements from 'items' based on 'newOrder'
+  newOrder.forEach((ele, index) => {
+    new_dic[ele] = items[index];
+  });
+
+  // Reorder the items inline based on the new_dic mapping
+  Object.entries(new_dic).forEach(([key, val]) => {
+    items[key] = val;
+  });
+
+  return items;
+}
