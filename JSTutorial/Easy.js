@@ -309,6 +309,7 @@ function sort(items, newOrder) {
 }
 
 //3. implement Array.prototype.flat()
+
 //do not use for of because it will escape undefined value
 //also the base case is 2: if depth = 0 or not array
 function flat(arr, depth = 1) {
