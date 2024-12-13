@@ -9,6 +9,37 @@ function curry(fn) {
   }
 }
 
+function curry(fn) {
+  // Return a function to start the currying process
+  return function inner(...args) {
+    // Check if we have enough arguments to call the function
+    if (args.length >= fn.length) {
+      // If enough arguments, call the original function
+      return fn(...args);
+    } else {
+      // Otherwise, return a new function that binds the next arguments
+      // `bind` will return a new function that can be called again with more arguments
+      return inner.bind(null, ...args);
+    }
+  };
+}
+
+
+function curry(fn) {
+  // Return a function to start the currying process
+  return function inner(...args) {
+    // Check if we have enough arguments to call the function
+    if (args.length >= fn.length) {
+      // If enough arguments, call the original function
+      return fn(...args);
+    } else {
+      return function(...args1) {
+        return inner(...args, ...args1)
+      }
+    }
+  };
+}
+
 //Now you call the previously bound function with (2, 3).
 //Calling a bound function with extra arguments appends those
 // new arguments to the previously bound ones. In other words:
@@ -204,7 +235,7 @@ class Queue {
 // Instead, a while loop should be used for transferring elements, as it continues until the inputStack is empty.
 
 //14.
-// In JavaScript, the value of this is determined by how a function is called. When you invoke a function in a certain context (like using an object method), this refers to that context (i.e., the object from which the function is called).
+// In JavaScript, the value of 'this' is determined by how a function is called. When you invoke a function in a certain context (like using an object method), this refers to that context (i.e., the object from which the function is called).
 // Context (this): The context (this) inside the returned memoized function will refer to the object from which the memoized function is called (for example, a.memoed(2) will ensure that this refers to a). Using func.apply(this, args) ensures that the correct context is passed to func.
 //When you use func(X) directly, JavaScript cannot infer what object this should refer to. Here's the basic rule:
 
@@ -235,6 +266,9 @@ function memo(func, resolver = (...args) => Array.from(args).join('_')) {
   };
 }
 
+
+// The value of this inside funcThis is determined by how funcThis is called. In this case, funcThis is called via the memoed method, so this refers to a (the object).
+// .apply(this, args) ensures that funcThis is called with the correct context (this referring to a) and arguments (args is [2]).
 
 //25
 function sort(items, newOrder) {
@@ -272,4 +306,18 @@ function sort(items, newOrder) {
   });
 
   return items;
+}
+
+//3. implement Array.prototype.flat()
+//do not use for of because it will escape undefined value
+//also the base case is 2: if depth = 0 or not array
+function flat(arr, depth = 1) {
+  let result = [];
+  arr.forEach(item => {
+    if(Array.isArray(item) && depth > 0) {
+      result.push(...flat(item, depth - 1));
+    }
+    else result.push(item);
+  });
+  return result;
 }

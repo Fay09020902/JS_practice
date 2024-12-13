@@ -386,4 +386,4 @@ function decode(message) {
 //   return rsl;
 // }
 
-decode(arr)
+
