@@ -9,6 +9,7 @@ function curry(fn) {
   }
 }
 
+//second way
 function curry(fn) {
   // Return a function to start the currying process
   return function inner(...args) {
