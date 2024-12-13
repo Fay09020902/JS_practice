@@ -25,7 +25,7 @@ function curry(fn) {
   };
 }
 
-
+//mo bind
 function curry(fn) {
   // Return a function to start the currying process
   return function inner(...args) {
