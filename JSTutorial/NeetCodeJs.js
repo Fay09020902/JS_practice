@@ -44,3 +44,27 @@ var map = function(arr, fn) {
     }
     return rslt
 };
+
+//2629. Function Composition
+var compose = function(functions) {
+
+    return function(x) {
+        for (let i = functions.length - 1; i >= 0; i--) {
+            let func = functions[i]
+            x = func(x)
+        }
+        return x
+    }
+};
+
+//2666. Allow One Function Call
+var once = function(fn) {
+    let once = false
+    return function(...args){
+        if (!once) {
+            once = true
+            return fn(...args)
+        }
+        return undefined
+    }
+};
