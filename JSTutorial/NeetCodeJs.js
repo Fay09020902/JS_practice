@@ -120,3 +120,16 @@ async function sleep(millis) {
         setTimeout(resolve, millis)
     })
 }
+
+
+//2637. Promise Time Limit
+var timeLimit = function(fn, t) {
+    return async function(...args) {
+        return new Promise((resolve, reject) => {
+            // will run reject function once it reaches time t
+            setTimeout(() => reject("Time Limit Exceeded"), t);
+
+            fn(...args).then((rsl) => resolve(rsl)).catch((e) => reject(e))
+        });
+    };
+};
