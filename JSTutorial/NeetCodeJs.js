@@ -68,3 +68,55 @@ var once = function(fn) {
         return undefined
     }
 };
+
+//2623. Memoize
+function memoize(fn) {
+    let count = 0
+    let cach = {}
+    return function(...args) {
+        const key = JSON.stringify(args);
+        if(args.length) {
+           if (key in cach) {
+            return cach[key]
+           } else {
+            count += 1
+            const result = fn(...args);  // Call the function with spread arguments
+            cach[key] = result;  // Store result in cache
+            return result;
+           }
+        }
+        count += 1
+        return count
+    }
+}
+
+//2632. Curry
+var curry = function(fn) {
+
+    return function curried(...args) {
+        if(args.length == fn.length) {
+            return fn(...args)
+        } else {
+            return function(...newArgs) {
+                return curried(...args, ...newArgs)
+            }
+        }
+    }
+};
+
+//2621. Sleep
+
+//await only works inside an async function
+//async function{} if no return it will return a promise with value undefined
+async function sleep(millis) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, millis)
+    })
+}
+
+//or, this will wait for the promise but return a promise with undefined
+async function sleep(millis) {
+    await new Promise((resolve, reject) => {
+        setTimeout(resolve, millis)
+    })
+}
