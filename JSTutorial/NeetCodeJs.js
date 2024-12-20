@@ -142,7 +142,7 @@ var timeLimit = function(fn, t) {
 
             fn(...args).then((rsl) => resolve(rsl)).catch((e) => reject(e))
             .finally(() => clearTimeout(id))
+            //cleartimeout
         });
     };
 };
-
