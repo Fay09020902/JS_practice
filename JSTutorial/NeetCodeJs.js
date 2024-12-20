@@ -133,3 +133,16 @@ var timeLimit = function(fn, t) {
         });
     };
 };
+
+var timeLimit = function(fn, t) {
+    return async function(...args) {
+        return new Promise((resolve, reject) => {
+            // will run reject function once it reaches time t
+            const id = setTimeout(() => reject("Time Limit Exceeded"), t);
+
+            fn(...args).then((rsl) => resolve(rsl)).catch((e) => reject(e))
+            .finally(() => clearTimeout(id))
+        });
+    };
+};
+
