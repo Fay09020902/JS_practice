@@ -236,3 +236,79 @@ var areDeeplyEqual = function(o1, o2) {
         // }
     }
 };
+
+
+//2633. Convert Object to JSON String
+var jsonStringify = function(object) {
+    if(typeof object === "number") {
+        return object.toString();
+    }
+    if(typeof object === 'string') {
+    return `"${object}"`;
+  }
+    if(object === undefined) {
+        return 'null';
+    }
+    if(object === null) {
+        return 'null';
+    }
+
+    if(typeof object === 'boolean') {
+    return `${object}`;
+  }
+    if(Array.isArray(object)) {
+        const arr = object.map((el) => jsonStringify(el));
+        return `[${arr.join(',')}]`;
+    }
+    // if(typeof object === "object") {
+    //     const rsl = Object.entries(object).reduce((acc,[key, value]) => {
+    //         return acc += `${key}:${jsonStringify(value)}` //dont forget to return
+    //     }, "")
+    //     return `{${rsl}}`
+    // }
+    if(typeof object === 'object') {
+    const arr = Object.entries(object).reduce((acc, [key, value]) => {
+      if(value === undefined) {
+        return acc;
+      }
+      acc.push(`"${key}":${jsonStringify(value)}`);
+      return acc;
+    }, [])
+    return `{${arr.join(',')}}`;
+  }
+};
+
+
+//2700. Differences Between Two Objects
+
+function objDiff(o1, o2) {
+    function isObject(obj) {
+        return typeof obj === 'object' && obj !== null
+    }
+    //if both value are primitives/null
+    if(!isObject(o1) && !isObject(o2)) {
+        return o1 === o2? {}: [o1, o2]
+    }
+    //one is object and the other is not, one is primitive
+    if (!isObject(o1) || !isObject(o2)) {
+        return [o1, o2]
+    }
+    //one is array, another is object
+    if (Array.isArray(o1) !== Array.isArray(o2)) {
+        return [o1, o2]
+    }
+
+    //if both arr, or both obj then recursive
+    const diff = {}
+
+    //common keys
+    for (let key1 in o1) {
+        if (key1 in o2) {
+            const res = objDiff(o1[key1], o2[key1])
+            if (Object.keys(res).length > 0) {
+                diff[key1] = res
+            }
+        }
+    }
+    return diff
+};
