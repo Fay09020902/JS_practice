@@ -312,3 +312,30 @@ function objDiff(o1, o2) {
     }
     return diff
 };
+
+//2677
+
+var chunk = function(arr, size) {
+    let new_arr = []
+    let rsl = []
+    let count = 0
+    for(let i of arr) {
+        if(count < size) {
+            new_arr.push(i)
+            count++
+        } else {
+            rsl.push(new_arr)
+            new_arr = []
+            new_arr.push(i)
+            count = 1
+        }
+    }
+    if(new_arr.length) {
+        rsl.push(new_arr)
+    }
+    return rsl
+};
+
+// for(let i = 0; i< arr.length; i += size) {
+//     res.push(arr.slice(i, i + size))
+// }
