@@ -355,3 +355,46 @@ var flat = function (arr, n) {
     }
     return rsl
 };
+
+//2619. Array Prototype Last
+Array.prototype.last = function() {
+    if (this.length === 0) {
+        return -1
+    }else {
+        return this[this.length - 1]
+    }
+};
+
+//2694. Event Emitter
+class EventEmitter {
+    eventMap = {}; // event: set()
+
+    /**
+     * @param {string} eventName
+     * @param {Function} callback
+     * @return {Object}
+     */
+    subscribe(eventName, callback) {
+        if (!(eventName in this.eventMap)) {
+            this.eventMap[eventName] = new Set(); // Corrected typo from `evenMap` to `eventMap`
+        }
+        this.eventMap[eventName].add(callback);
+
+        return {
+            unsubscribe: () => {
+                this.eventMap[eventName].delete(callback);
+            }
+        };
+    }
+
+    /**
+     * @param {string} eventName
+     * @param {Array} args
+     * @return {Array}
+     */
+    emit(eventName, args = []) {
+        const res = [];
+        (this.eventMap[eventName] ?? []).forEach(cb => res.push(cb(...args)));
+        return res;
+    }
+}
