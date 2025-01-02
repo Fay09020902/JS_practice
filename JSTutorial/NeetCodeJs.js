@@ -339,3 +339,19 @@ var chunk = function(arr, size) {
 // for(let i = 0; i< arr.length; i += size) {
 //     res.push(arr.slice(i, i + size))
 // }
+
+
+//2625. Flatten Deeply Nested Array
+var flat = function (arr, n) {
+    let rsl = []
+    for(let a of arr) {
+        if ((Array.isArray(a) && n > 0)) {
+            rsl.push(...flat(a, n - 1));
+            //return flat(a,l-1)
+            //return flat(a, l - 1); // This exits the function immediately
+        } else {
+            rsl.push(a)
+        }
+    }
+    return rsl
+};
