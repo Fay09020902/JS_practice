@@ -185,7 +185,6 @@ var debounce = function(fn, t) {
 };
 
 
-
 //2628. JSON Deep Equal
 var areDeeplyEqual = function(o1, o2) {
     if(o1 === null || o2 === null) {
@@ -370,7 +369,7 @@ class EventEmitter {
     eventMap = {}; // event: set()
     subscribe(eventName, callback) {
         if (!(eventName in this.eventMap)) {
-            this.eventMap[eventName] = new Set(); // Corrected typo from `evenMap` to `eventMap`
+            this.eventMap[eventName] = new Set();
         }
         this.eventMap[eventName].add(callback);
 
