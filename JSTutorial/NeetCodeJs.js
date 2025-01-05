@@ -368,12 +368,6 @@ Array.prototype.last = function() {
 //2694. Event Emitter
 class EventEmitter {
     eventMap = {}; // event: set()
-
-    /**
-     * @param {string} eventName
-     * @param {Function} callback
-     * @return {Object}
-     */
     subscribe(eventName, callback) {
         if (!(eventName in this.eventMap)) {
             this.eventMap[eventName] = new Set(); // Corrected typo from `evenMap` to `eventMap`
