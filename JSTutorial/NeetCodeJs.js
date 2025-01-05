@@ -381,11 +381,6 @@ class EventEmitter {
         };
     }
 
-    /**
-     * @param {string} eventName
-     * @param {Array} args
-     * @return {Array}
-     */
     emit(eventName, args = []) {
         const res = [];
         (this.eventMap[eventName] ?? []).forEach(cb => res.push(cb(...args)));
