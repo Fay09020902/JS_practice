@@ -348,25 +348,45 @@
 //   console.log( 'call:' + args.join() ); // "call:1,2", "call:4,5"
 // }
 
-//
+//with this method
 
-let obj = {
-  multiplier: 2,
-  multiply(a) {
-    return this.multiplier * a; // Relies on `this`
+// let obj = {
+//   multiplier: 2,
+//   multiply(a) {
+//     return this.multiplier * a; // Relies on `this`
+//   }
+// };
+
+// function spy(func) {
+//   function wrapper(...args) {
+//       wrapper.calls.push(args)
+//       let result = func.apply(this, args)
+//       return result
+//    }
+//    wrapper.calls = []
+//    return wrapper
+//  }
+// // Apply the spy decorator
+// obj.multiply = spy(obj.multiply);
+
+// console.log(obj.multiply(5)); // Version 1: NaN; Version 2: 10
+
+
+
+
+//Delaying decoratorc: Create a decorator delay(f, ms) that delays each call of f by ms milliseconds.
+function f(x) {
+  console.log(x);
+}
+
+function delay(func, t) {
+  return function() {
+    setTimeout(()=> func.apply(this, arguments), t)
   }
-};
+}
+// create wrappers
+let f1000 = delay(f, 1000);
+let f1500 = delay(f, 1500);
 
-function spy(func) {
-  function wrapper(...args) {
-      wrapper.calls.push(args)
-      let result = func.apply(this, args)
-      return result
-   }
-   wrapper.calls = []
-   return wrapper
- }
-// Apply the spy decorator
-obj.multiply = spy(obj.multiply);
-
-console.log(obj.multiply(5)); // Version 1: NaN; Version 2: 10
+f1000("test"); // shows "test" after 1000ms
+f1500("test"); // shows "test" after 1500ms
