@@ -374,19 +374,70 @@
 
 
 
-//Delaying decoratorc: Create a decorator delay(f, ms) that delays each call of f by ms milliseconds.
-function f(x) {
-  console.log(x);
-}
+// //Delaying decoratorc: Create a decorator delay(f, ms) that delays each call of f by ms milliseconds.
+// function f(x) {
+//   console.log(x);
+// }
 
-function delay(func, t) {
-  return function() {
-    setTimeout(()=> func.apply(this, arguments), t)
-  }
-}
-// create wrappers
-let f1000 = delay(f, 1000);
-let f1500 = delay(f, 1500);
+// function delay(func, t) {
+//   return function() {
+//     setTimeout(()=> func.apply(this, arguments), t)
+//   }
+// }
+// // create wrappers
+// let f1000 = delay(f, 1000);
+// let f1500 = delay(f, 1500);
 
-f1000("test"); // shows "test" after 1000ms
-f1500("test"); // shows "test" after 1500ms
+// f1000("test"); // shows "test" after 1000ms
+// f1500("test"); // shows "test" after 1500ms
+
+
+
+// //Debounce decorator
+// function debounce(func, t) {
+//   let id
+//   return function(...args) {
+//     clearTimeout(id)
+//     id = setTimeout(() => func(...args), t)
+//   }
+// }
+// let f = debounce((n) => console.log(n), 1000);
+
+// f("a");
+// setTimeout( () => f("b"), 200);
+// setTimeout( () => f("c"), 500);
+
+// //1299
+
+// var replaceElements = function(arr) {
+//   let left = 0
+//   if(arr.length === 1) {
+//       return [-1]
+//   }
+//   for (let i = 0; i < arr.length - 1; i++) {
+//       let max = arr[i+1]
+
+//       for(let right = i + 1; right < arr.length; right++) {
+//          if(arr[right] > max) {
+//           max = arr[right]
+//          }
+//       }
+//       arr[i] = max
+//   }
+//   arr[arr.length - 1] = -1
+//   return arr
+// };
+
+
+// //easy slution
+// var replaceElements = function(arr) {
+//   let maxSoFar = -1; // Start with -1 as the last element will always be -1
+//   for (let i = arr.length - 1; i >= 0; i--) {
+//       let current = arr[i];
+//       arr[i] = maxSoFar;
+//       if (current > maxSoFar) {
+//           maxSoFar = current; // Update the max so far
+//       }
+//   }
+//   return arr;
+// };
