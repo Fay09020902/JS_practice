@@ -441,3 +441,52 @@
 //   }
 //   return arr;
 // };
+
+
+// //392
+// var isSubsequence = function(s, t) {
+//   //two pointers, left pinter is the current position, right index find the corresponding current
+//   //char's position
+
+//   let s_index = 0
+//   let t_index = 0
+
+//   while (s_index < s.length && t_index < t.length) {
+//       let cur_char = s[s_index]
+//       //if t value equal to current value, shift s_index and t_index
+//       //if not, shift t_index
+//       if(t[t_index] === cur_char) {
+//          s_index++
+//       }
+//       t_index++
+//   }
+//   if (s_index !== s.length) {
+//       return false
+//   }
+//   return true
+// };
+
+// //238
+// var productExceptSelf = function(nums) {
+//     //prefix: take the produt of all elements up to but excluding the current index
+//     let prefix = new Array(nums.length).fill(1)
+//     for(let i = 1; i < nums.length; i++) {
+//         prefix[i] = nums[i-1] * prefix[i-1]
+//     }
+//     let suffix = new Array(nums.length).fill(1)
+
+//     // wrong//suffix[j] = nums[j+1] * suffix[j+1], when j is the last index, nums[j+1] will result in an out-of-bounds error.
+//     // for(let j = nums.length - 1; j >=0; j++) {
+//     //     suffix[j] = nums[j+1] * suffix[j+1]
+//     // }
+
+//     for(let j = nums.length - 2; j >=0; j--) {
+//         suffix[j] = nums[j+1] * suffix[j+1]
+//     }
+//     let result = new Array(nums.length);
+//     for (let k = 0; k < nums.length; k++) {
+//         result[k] = prefix[k] * suffix[k];
+//     }
+
+//     return result;
+// };
