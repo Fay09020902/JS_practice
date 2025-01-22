@@ -644,3 +644,35 @@
 //     // i now points to the length of the non-val portion
 //     return i;
 // };
+
+
+// //205. Isomorphic Strings
+// var isIsomorphic = function(s, t) {
+//     let maps = {};
+//     let mapt = {};
+
+//     if (s.length !== t.length) {
+//         return false;
+//     }
+
+//     for (let i = 0; i < s.length; i++) {
+//         let charS = s[i];
+//         let charT = t[i];
+
+//         // Check s -> t mapping
+//         if (maps[charS] && maps[charS] !== charT) {
+//             return false;
+//         }
+
+//         // Check t -> s mapping
+//         if (mapt[charT] && mapt[charT] !== charS) {
+//             return false;
+//         }
+
+//         // Create mappings
+//         maps[charS] = charT;
+//         mapt[charT] = charS;
+//     }
+
+//     return true;
+// };
