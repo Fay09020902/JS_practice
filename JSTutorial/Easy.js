@@ -582,3 +582,19 @@
 //     // console.log(s[end])
 //     return l
 // };
+
+// //14. Longest Common Prefix
+// var longestCommonPrefix = function(strs) {
+//     //the letter must in all words
+//     let l = ""
+//     for(let i = 0; i <= strs[0].length - 1; i++) {
+//        let letter = strs[0][i]
+//        for(let j = 1; j < strs.length; j++) {
+//         if(strs[j][i] !== letter) {
+//             return l
+//         }
+//        }
+//        l += letter
+//     }
+//     return l
+// };
