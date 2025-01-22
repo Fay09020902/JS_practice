@@ -623,3 +623,24 @@
 //     }
 //     return rsl
 // };
+
+
+// //27
+// var removeElement = function(nums, val) {
+//     let i = 0; // Pointer for non-val elements
+//     let j = nums.length - 1; // Pointer for potential swaps
+
+//     while (i <= j) {
+//         if (nums[i] === val) {
+//             // If nums[i] is val, swap it with nums[j] and decrement j
+//             [nums[i], nums[j]] = [nums[j], nums[i]];
+//             j--;
+//         } else {
+//             // If nums[i] is not val, move to the next element
+//             i++;
+//         }
+//     }
+
+//     // i now points to the length of the non-val portion
+//     return i;
+// };
