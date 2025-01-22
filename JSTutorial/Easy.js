@@ -513,3 +513,37 @@
 // var decode = function(s) {
 //     return s.split("π")
 // };
+
+// //1496. Path Crossing
+// var isPathCrossing = function(path) {
+//     //start at 00
+//     //if north, then column+1, s column - 1
+//     //if e row +1, west row - 1
+//     //create a dic where rol is the key, cols are sets
+//     //if row, colm in dic, then wrong
+//     let exsits_cor = {0: new Set([0])}
+//     let row = 0
+//     let column = 0
+//     for(let dir of path) {
+//        if(dir == 'N') {
+//            column += 1
+//        }
+//        if(dir == 'S') {
+//            column -= 1
+//        }
+//        if(dir == 'E') {
+//            row += 1
+//        }
+//        if(dir == 'W') {
+//            row -= 1
+//        }
+//        if(!exsits_cor[row]) {
+//            exsits_cor[row] = new Set([column])
+//        } else if (exsits_cor[row].has(column)){
+//            return true
+//        } else {
+//            exsits_cor[row].add(column)
+//        }
+//     }
+//    return false
+// };
