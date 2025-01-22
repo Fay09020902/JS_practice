@@ -547,3 +547,38 @@
 //     }
 //    return false
 // };
+
+// //58. Length of Last Word
+// var lengthOfLastWord = function(s) {
+//     //lenght index intervall + 1
+//     let start = s.length - 1
+//     let end
+//     while(s[start] == ' ') {
+//         start--
+//     }
+//     //end cannot be -1
+//     end = start
+//     while(end >= 0 && s[end] !== ' ') {
+//         end--
+//     }
+//     // console.log(s[start])
+//     // console.log(s[end])
+//     return start - end
+// };
+
+
+// var lengthOfLastWord = function(s) {
+//     //lenght index intervall + 1
+//     let start = s.length - 1
+//     let l = 0
+//     while(s[start] == ' ') {
+//         start--
+//     }
+//     while(start >= 0 && s[start] !== ' ') {
+//         l += 1
+//         start--
+//     }
+//     // console.log(s[start])
+//     // console.log(s[end])
+//     return l
+// };
