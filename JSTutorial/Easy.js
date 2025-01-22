@@ -598,3 +598,28 @@
 //     }
 //     return l
 // };
+
+// //118. Pascal's Triangle
+// var generate = function(numRows) {
+//     if(numRows == 1) {
+//         return [[1]]
+//     }
+//     if(numRows == 2) {
+//         return [[1], [1, 1]]
+//     }
+//     //start with 1, then loop the last row and add neibours to get the sum, at the end, push 1
+//     let rsl = [[1], [1, 1]]
+//     let countRows = 2
+//     while(countRows < numRows) {
+//         let last_row = rsl[rsl.length - 1]
+//         let next_row = [1]
+//         for(let i = 0; i < last_row.length - 1; i++) {
+//            let cur = last_row[i] + last_row[i+1]
+//            next_row.push(cur)
+//         }
+//         next_row.push(1)
+//         rsl.push(next_row)
+//         countRows++
+//     }
+//     return rsl
+// };
