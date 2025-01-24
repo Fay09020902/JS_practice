@@ -676,3 +676,85 @@
 
 //     return true;
 // };
+
+// //605. Can Place Flowers
+// var canPlaceFlowers = function(flowerbed, n) {
+//     let count = 0;
+
+//     for (let i = 0; i < flowerbed.length; i++) {
+//         // Check if the current spot is 0 and adjacent spots are also 0
+//         if (flowerbed[i] === 0 &&
+//             (i === 0 || flowerbed[i - 1] === 0) && // No left neighbor or left neighbor is 0
+//             (i === flowerbed.length - 1 || flowerbed[i + 1] === 0)) { // No right neighbor or right neighbor is 0
+//             flowerbed[i] = 1; // Plant a flower
+//             count++; // Increment the flower count
+//             i++; // Skip the next spot (can't plant adjacent flowers)
+//         }
+//     }
+
+//     return count >= n; // Return true if we have enough flowers planted
+
+
+// //15. 3Sum
+// var threeSum = function(nums) {
+//     //need sorting to avoid duplicates
+//     let rsl = []
+//     nums.sort((a, b) => a - b) //time complexity O(nlogn)
+//     //loop pivot elements and use two pointers to analyze elements to its right
+//     //a. if value of current pointer is same as last(left neighbor) pivot, pivot++
+//     //b. if value of left+right smaller than target, then move left, otherwise move right
+//     let pivot = 0;
+//     while(pivot < nums.length - 2) {
+//         // Skip duplicate pivot values
+//         while(nums[pivot] == nums[pivot - 1] && pivot > 0) { //not the first element in nums
+//             pivot++
+//             continue;
+//         }
+//         let left = pivot + 1
+//         let right = nums.length - 1
+//         while(left < right) {
+//             let sum = nums[left] + nums[right]
+//             if(sum < (-nums[pivot])) {
+//                 left++
+//             } else if (sum === (-nums[pivot])) {
+//                 rsl.push([nums[pivot], nums[left], nums[right]])
+//                 //[2,2,0,0,-2,-2]
+//                 while (left < right && nums[left] === nums[left + 1]) left++;
+//                 while (left < right && nums[right] === nums[right - 1]) right--;
+//                 left++;
+//                 right--;
+//             } else {
+//                 right --
+//             }
+//         }
+//         pivot++
+//     }
+//     return rsl
+// };
+
+
+// //496
+
+// var nextGreaterElement = function(nums1, nums2) {
+//     //make a dic for the next greater value
+//     //index bigger than current and val bigger than cur
+//     let dic = {} //mao val to next greater element
+//     for(let i = 0; i < nums2.length; i++) {
+//         let cur = nums2[i]
+//         let j = i + 1
+
+//         while(j < nums2.length && cur >= nums2[j]) {
+//             j++
+//         }
+//         if(j === nums2.length) {
+//             dic[cur] = -1
+//         } else {
+//             dic[cur] = nums2[j]
+//         }
+//     }
+//     let rsl = []
+//     for(let ele of nums1) {
+//         rsl.push(dic[ele])
+//     }
+//     return rsl
+// };
