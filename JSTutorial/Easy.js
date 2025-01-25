@@ -758,3 +758,48 @@
 //     }
 //     return rsl
 // };
+
+
+// //better solution
+// var nextGreaterElement = function(nums1, nums2) {
+//     //stack
+//     //make dictionnary fot num1 to mark their position in result arr {4: 0, 1:1, 2:2}
+//     //loop through nums2 to initailize stack, if the element in the nums1, push to stack
+//     //1. continue loop through nums2,
+//     //a. while stack, if the current bigger than the last of stack, write result and pop it
+//     //b.if it is bigger than current [4] [3]
+//     //number is in nums1, push current number into stack
+//     let map = {}
+//     let stack = []
+//     let result = new Array(nums1.length).fill(-1);
+//     for(let i = 0; i < nums1.length; i++) {
+//         map[nums1[i]] = i
+//     }
+//     for(let num of nums2) {
+//         while(stack && (stack[stack.length - 1] < num)) {
+//             if(stack[stack.length - 1] in map) {
+//                 result[map[stack[stack.length - 1]]] = num
+//             }
+//             stack.pop()
+//         }
+//         stack.push(num)
+//     }
+//     return result
+// };
+
+// //724
+
+// var pivotIndex = function(nums) {
+//     //left_sum + pivot + rightsum = sum(nums)
+
+//     let totalSum = nums.reduce((acc, num) => acc + num, 0);
+//     let left_sum = 0
+//     for (let i = 0; i < nums.length; i++) {
+//         let right_sum = totalSum - left_sum - nums[i];
+//         if (left_sum === right_sum) {
+//             return i; // Found the pivot index
+//         }
+//         left_sum += nums[i];
+//     }
+//     return -1; // No pivot index found
+// };
