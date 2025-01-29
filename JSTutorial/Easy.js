@@ -803,3 +803,26 @@
 //     }
 //     return -1; // No pivot index found
 // };
+
+
+// //896. Monotonic Array
+// var isMonotonic = function(nums) {
+//     if(nums.length === 1) {
+//         return true
+//     }
+//     let flag = nums[1] - nums[0] //0 if equal, positive if increasing, negative if decreasing
+//     for (let i = 1; i < nums.length; i++) {
+//         if (nums[i] > nums[i - 1]) { // Increasing trend
+//             if (flag < 0) {
+//                 return false; // Conflicting trend (was decreasing)
+//             }
+//             flag = 1;
+//         } else if (nums[i] < nums[i - 1]) { // Decreasing trend
+//             if (flag > 0) {
+//                 return false; // Conflicting trend (was increasing)
+//             }
+//             flag = -1;
+//         }
+//     }
+//     return true
+// };
