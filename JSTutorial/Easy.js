@@ -826,3 +826,42 @@
 //     }
 //     return true
 // };
+
+// //121. Best Time to Buy and Sell Stock
+// var maxProfit = function(prices) {
+//     //have a min price and max profit,
+//     //loop arr
+//     //a. if bigger than min price, caculate and compare to max profit
+//     //b if smaller than min price, update min price
+//     //c.if equal min price, do nothing
+//     let minPrice = Infinity
+//     let maxProfit = 0
+//     for(let p of prices) {
+//         if(p < minPrice) {
+//             minPrice = p
+//         } else if(p - minPrice > maxProfit) {
+//             maxProfit = p - minPrice
+//         }
+//     }
+//     return maxProfit
+// };
+
+
+// var maxProfit = function(prices) {
+//     //two pointers
+//     //move left pointers over to its end every time we encounter a lower buyPrice than our current buyPrice and update maxProfit seen so far
+//     if(prices.length === 1) {
+//         return 0
+//     }
+//     let left = 0 //buy
+//     let right = 1 //sell
+//     let maxProfit = 0
+//     while(right < prices.length) {
+//         maxProfit = Math.max(maxProfit, prices[right] - prices[left])
+//         if(prices[right] < prices[left]) {
+//             left = right
+//         }
+//         right++
+//     }
+//     return maxProfit
+// };
