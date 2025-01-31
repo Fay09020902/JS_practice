@@ -787,8 +787,8 @@
 //     return result
 // };
 
-// //724
 
+// //724
 // var pivotIndex = function(nums) {
 //     //left_sum + pivot + rightsum = sum(nums)
 
