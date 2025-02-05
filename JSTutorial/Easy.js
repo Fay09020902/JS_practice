@@ -886,3 +886,46 @@
 //     }
 //     return count
 // };
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+
+
+// //16
+// var threeSumClosest = function(nums, target) {
+//     //-4 -1 1 2 , target 1
+//     //minSum = abs(sum - target) Infnity
+//     //-4, -1 + 2; -4 + 1 = -3;  -3 < 1, distance: 1--3 = 4 < minSum, update, move left
+//     //-4, 1 + 2; -4 + 3 = -1; -1 < 1, distance 2 < minSum, update and move left
+//     //next pivot -1, -1 + 1 + 2 > target,  move right
+//     //if abs(-4 + twoSum - target) > minSum,
+//     //loop through numbers and for each pivot
+//     //use two pointers for the nums to pivot's right
+//     //if equal to pivot, return target
+//     //if small than pivot, update minSum and move left
+//     let minSum = Infinity
+//     nums.sort((a, b) => a - b);
+//     for(let pivot = 0; pivot < nums.length; pivot++) {
+//         let pivotNum = nums[pivot]
+//         let left = pivot + 1
+//         let right = nums.length - 1
+//         while(left < right) {
+//             let sum = pivotNum + nums[left] + nums[right]
+//             if (Math.abs(sum - target) < Math.abs(minSum - target)) {
+//                minSum = sum;
+//             }
+//             if(sum === target) {
+//                 return sum
+//             } else if(sum < target) {
+//                 left++
+//             } else {
+//                 right--
+//             }
+//         }
+//     }
+//     return minSum
+// };
