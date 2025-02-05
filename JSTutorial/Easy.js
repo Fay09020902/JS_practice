@@ -865,3 +865,24 @@
 //     }
 //     return maxProfit
 // };
+
+// //2824
+// var countPairs = function(nums, target) {
+//     //-1 1 1 2 3 target 2
+//     //two pointers, -1 + 3 = 2 which == target, we move right
+//     //-1 + 2 = 1 which < target, then [left, left+1, .... right] all valid
+//     //and move left one forward
+//     let left = 0
+//     let right = nums.length
+//     nums.sort((a, b) => a - b)
+//     let count = 0
+//     while (left < right) {
+//         if(nums[left] + nums[right] < target) {
+//             count += right - left
+//             left++
+//         } else {
+//             right--
+//         }
+//     }
+//     return count
+// };
