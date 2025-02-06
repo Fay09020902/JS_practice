@@ -976,3 +976,44 @@
 //     }
 //     return minLen === nums.length + 1 ? 0 : minLen;
 // };
+
+//secondway
+//     let left = 0
+//     let sum = 0
+//     let minLen = nums.length + 1
+//     for(let right = 0; right < nums.length; right++) {
+//         sum += nums[right]
+//         if(sum < target) {
+//             continue
+//         }
+//         // if sum - nums[left] >= target, we can remove from left
+//         while (sum - nums[left] >= target && left <= right) {
+//             sum -= nums[left]
+//             left++
+//         }
+//         minLen = Math.min(right - left + 1, minLen)
+//     }
+//     return minLen === nums.length + 1 ? 0 : minLen;
+// };
+
+
+// //713
+// var numSubarrayProductLessThanK = function(nums, k) {
+//     //loop through right pivot point
+//     //move left until product less than k
+//     //if product less than k, the subset of k also less than k
+//     let left = 0
+//     let count = 0
+//     let product = 1
+//     for(let right = 0; right < nums.length; right++) {
+//         product = product * nums[right]
+//         while(product >= k && left < right) {
+//             product = product / nums[left]
+//             left ++
+//         }
+//         if(product < k) {
+//             count = count + right - left + 1
+//         }
+//     }
+//     return count
+// };
