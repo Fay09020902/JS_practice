@@ -929,3 +929,50 @@
 //     }
 //     return minSum
 // };
+
+
+//209
+
+// /**
+//  * @param {number} target
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
+// var minSubArrayLen = function(target, nums) {
+//     //use right as pivot, for loop though right = 0 to end
+//     //in each loop, find all possible subarray where sum >= target
+//     //add the right to the window
+//     //a.if sum < target: go to next loop
+//     //b.if sum >= target, we find min length with this left and right, log the minal length
+//     //and we need to find subaray with this right end by going through all possible left pivot
+//     //b.1 use while sum >= target loop by increasing left or left == right
+//     //b.1.1 if sum < target: log the minimal length adn continue the loop
+//     //2 < target,
+//     //add next to window 2 + 3 < target
+//     //add next to window 2+3+1 < target
+//     //add next to window 2+3+1+2 > target  log the minimal length
+//     //delete first num if 3+1+2 < target and add next number
+//     //3+1+2+4 log the minimal length
+//     //delete first num 1+2+4 if >= target, log the minimal length
+//     //delete first num 2+4 < target, we add next to window
+//     //a.make a window, while left < right and right < length
+//     //a1.if sum window smaller than target, add next to window
+//     //a2.if sum window larger or equal to target, log the length and delete first num
+
+//     let left = 0
+//     let sum = 0
+//     let minLen = nums.length + 1
+//     for(let right = 0; right < nums.length; right++) {
+//         sum += nums[right]
+//         if(sum < target) {
+//             continue
+//         }
+//         // ✅ Shrink the window from the left while sum >= target
+//         while (sum >= target && left <= right) {
+//             minLen = Math.min(right - left + 1, minLen)
+//             sum -= nums[left]
+//             left++
+//         }
+//     }
+//     return minLen === nums.length + 1 ? 0 : minLen;
+// };
