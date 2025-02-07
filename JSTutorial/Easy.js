@@ -1017,3 +1017,54 @@
 //     }
 //     return count
 // };
+
+
+// // //735
+// // Optimized Approach:
+// // Create a stack
+// // Iterate over asteroids
+// // while we have a collision between top of stack and curr asteroid
+// // pop the stack if the curr asteroid is bigger
+// // set the curr asteroid to null so we don't add it to the stack if the asteroid on top of stack is bigger
+// // or pop the stack and set the curr asteroid to null if they're the same size
+// // if no collisions then push on the curr asteroid
+// // Return stack at the end
+
+
+
+// // Input: [1,2,3,4,5,6,7,8,9,-10]
+
+// // Output: [-10]
+
+// // Input:
+// // asteroids = [1,2,3,-3,4,-2,-1]
+
+// // stack = [1,2,4]
+
+// // Time = 2 passes of length n, n + n = 2n => O(n)
+// // Space = O(n)
+
+// // n^2 is for n operations I do n operations
+
+
+// const asteroidCollision = asteroids => {
+// 	let stack = [];
+// 	for (asteroid of asteroids) { //n
+// 	while(stack.length != 0 && asteroid < 0 && stack.at(-1)>0){
+// 	let diff = asteroid + stack.at(-1); //3
+
+// 	if (diff < 0) {
+// 	stack.pop()
+// } else if (diff > 0) {
+// 	asteroid = 0;
+// } else {
+// 	asteroid = 0;
+// 	stack.pop();
+// }
+// }
+// if (asteroid) {
+// 	stack.push(asteroid)
+// }
+// }
+// return stack
+// }
