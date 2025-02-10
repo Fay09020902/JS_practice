@@ -1068,3 +1068,32 @@
 // }
 // return stack
 // }
+
+
+// //503
+
+// var nextGreaterElements = function(nums) {
+//     //for i in range(n * 2 - 1, -1, -1):
+//     // x = nums[i % n]
+//     //if empty push to stack
+//     //if cur one is greater than top, pop top one and log it's next greater value, repeat this until
+//     //smaller
+//     //if smaller than top, push to stack
+//     //[1, 2, 1, 1, 2, 1]
+//     const n = nums.length;
+//     const ans = Array(n).fill(-1);
+//     const st = [];
+//     for(let i = 0; i < nums.length*2 - 1; i++) {
+//         let cur_index = i % nums.length
+//         // console.log(i, cur_index)
+//         while(st.length > 0 && nums[cur_index] > st[st.length - 1][0]) {
+//            let prev = st.pop()
+//            ans[prev[1]] = nums[cur_index]
+//         }
+//         st.push([nums[cur_index], cur_index])
+// // console.log(st)
+// //         console.log(ans)
+// //         console.log(".......")
+//     }
+//     return ans
+// };
