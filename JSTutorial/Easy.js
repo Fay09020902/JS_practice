@@ -1097,3 +1097,35 @@
 //     }
 //     return ans
 // };
+
+
+// //34
+
+// var lowerbound = function(nums, target) {
+//     let left = 0
+//     let right = nums.length
+//     while(left < right) { //at least one element in it
+//         let mid = Math.floor((left + right) / 2)
+//         if(nums[mid] < target) {
+//             left = mid + 1
+//         } else {
+//             right = mid//询问的区间缩小至[left, mid - 1] == [left, mid)
+//         }
+//     }
+//     return left
+// }
+
+// var searchRange = function(nums, target) {
+//     let ans = [-1, -1]
+//     let left = 0
+//     let right = nums.length - 1
+//     //区间内的数（下标）都是还未确定与 target 的大小关系的，有的是 < target，有的是 ≥ target
+//     // 检查是否找到 target
+//     let first = lowerbound(nums, target)
+//     if (first >= nums.length || nums[first] !== target) {
+//         return [-1, -1]
+//     }
+
+//     let last = lowerbound(nums, target + 1) - 1
+//     return [first, last]
+// };
