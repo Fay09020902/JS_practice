@@ -1129,3 +1129,65 @@
 //     let last = lowerbound(nums, target + 1) - 1
 //     return [first, last]
 // };
+
+
+// //2958
+// var maxSubarrayLength = function(nums, k) {
+//     //for every righht pivot, find all possible subarrays
+//     //if frequency not within the k, we short the left until under frequency
+//     //log the length
+//     let ans = 1
+//     let frequency_map = {}
+//     let left = 0
+//     for(let right = 0; right < nums.length; right++) {
+//         let cur = nums[right]
+//         if(frequency_map[cur]) {
+//             frequency_map[cur]++
+//         } else {
+//             frequency_map[cur] = 1
+//         }
+//         while((frequency_map[cur]) > k) {
+//            frequency_map[nums[left]]--
+//            left++
+//         }
+//         //console.log(frequency_map, left, right)
+//         ans = Math.max(right - left + 1, ans)
+//     }
+//     return ans
+// };
+
+// //2529
+// var maximumCount = function(nums) {
+//     //the left of left index <0 and right of right index >=0
+//     //if middle < 0, move left to middle + 1
+//     //if middle >= 0, move right to middle - 1
+//     //once right < middle, means no value left to compare
+//     //num of negative is right, num of positive = length - right - number of 0s
+//     let left = 0
+//     let right = nums.length - 1
+//     let zero_count = 0
+//     // Find the first non-negative number (0 or positive)
+//     while(left <= right) {
+//         let mid = Math.floor((left + right) / 2)
+//         if(nums[mid] >= 0) {
+//             right = mid - 1
+//         } else {
+//             left = mid + 1
+//         }
+//     }
+//     let negCount = left;
+//     // Find the first positive number (ignoring zeros)
+//     //left <= 0
+//     left = 0, right = nums.length - 1;
+//     while(left <= right) {
+//         let mid = Math.floor((left + right) / 2)
+//         if(nums[mid] <= 0) {
+//             left = mid + 1
+//         } else {
+//             right = mid - 1
+//         }
+//     }
+//     let posCount = nums.length - left; // Count of positive numbers (ignoring zeros)
+
+//     return Math.max(negCount, posCount);
+// };
