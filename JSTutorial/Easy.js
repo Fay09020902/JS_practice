@@ -1210,3 +1210,19 @@
 //     f(root, 0)
 //     return sum
 // };
+
+
+// //1448
+// var goodNodes = function(root, maxSoFar = -Infinity) {
+//     if (root === null) {
+//         return 0;
+//     }
+
+//     let count = 0;
+//     if (root.val >= maxSoFar) {
+//         count = 1; // This node is "good"
+//         maxSoFar = root.val; // Update max for this path
+//     }
+
+//     return count + goodNodes(root.left, maxSoFar) + goodNodes(root.right, maxSoFar);
+// };
