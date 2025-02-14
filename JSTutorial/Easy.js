@@ -1226,3 +1226,19 @@
 
 //     return count + goodNodes(root.left, maxSoFar) + goodNodes(root.right, maxSoFar);
 // };
+
+
+//101
+var isSymmetric = function(root) {
+    if (root === null) return true;
+
+    function dfs(left, right) {
+        if (left === null && right === null) return true;
+        if (left === null || right === null) return false;
+        return (left.val === right.val) &&
+               dfs(left.left, right.right) &&
+               dfs(left.right, right.left);
+    }
+
+    return dfs(root.left, root.right);
+};
