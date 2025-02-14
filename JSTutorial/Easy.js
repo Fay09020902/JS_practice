@@ -1191,3 +1191,22 @@
 
 //     return Math.max(negCount, posCount);
 // };
+
+
+// //129
+// var sumNumbers = function(root) {
+//     let sum = 0
+//     function f(root, number) {
+//         if(root === null) {
+//             return 0
+//         }
+//         number = number*10 + root.val
+//         if(root.left === null && root.right === null) {
+//             sum += number
+//         }
+//         f(root.left, number)
+//         f(root.right, number)
+//     }
+//     f(root, 0)
+//     return sum
+// };
