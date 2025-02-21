@@ -1275,3 +1275,53 @@
 //     helper(root, 0)
 //     return min
 // };
+
+
+// //112
+// var hasPathSum = function(root, targetSum) {
+
+//     function helper(root, sum) {
+//         if(root === null) {
+//             return false
+//         }
+//         sum += root.val
+//         if(root.left === null && root.right === null) {
+//             return targetSum === sum
+//         }
+//         return (helper(root.left, sum) || helper(root.right, sum))
+//     }
+//     return helper(root, 0)
+
+// };
+
+
+// //129
+// var sumNumbers = function(root) {
+//     let sum = 0
+//     function helper(root, curSum) {
+//         if(root === null) {
+//             return 0
+//         }
+//         curSum = 10*(curSum) + root.val
+//         if(root.left === null && root.right === null) {
+//             sum += curSum
+//             return
+//         }
+//        helper(root.left, curSum)
+//        helper(root.right, curSum)
+
+//     }
+//     helper(root, 0)
+//     return sum
+// };
+
+
+// //1448
+
+// var goodNodes = function (root, mx = -Infinity) {
+//     if (root === null)
+//         return 0;
+//     const left = goodNodes(root.left, Math.max(mx, root.val));
+//     const right = goodNodes(root.right, Math.max(mx, root.val));
+//     return left + right + (mx <= root.val);
+// };
