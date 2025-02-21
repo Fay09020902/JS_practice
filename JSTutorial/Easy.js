@@ -1255,3 +1255,23 @@
 //     }
 //     return Math.min(minDepth(root.left), minDepth(root.right)) + 1
 // };
+
+
+
+// var minDepth = function(root) {
+//     if (root === null) return 0;
+//     let min = -Infinity
+//     function helper(root, depth) {
+//         if(root === null) {
+//             return
+//         }
+//         depth += 1
+//         if(root.left === null && root.right === null){
+//            min = Math.min(min,depth)
+//         }
+//         helper(root.left, depth)
+//         helper(root.right, depth)
+//     }
+//     helper(root, 0)
+//     return min
+// };
